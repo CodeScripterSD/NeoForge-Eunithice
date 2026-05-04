@@ -7,7 +7,6 @@ import com.craftminerd.eunithice.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -53,5 +52,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.LOGS_THAT_BURN).addTag(ModTags.Items.DARKWOOD_LOGS);
 
         tag(ModTags.Items.SHORTBOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
     }
 }

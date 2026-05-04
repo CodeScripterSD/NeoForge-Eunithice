@@ -1,7 +1,6 @@
 package com.craftminerd.eunithice.item.custom;
 
 import com.craftminerd.eunithice.item.enchantment.ModEnchantments;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -81,9 +80,7 @@ public class ExperimentalBow extends BowItem {
         float f = -Mth.sin(y * ((float)Math.PI / 180F)) * Mth.cos(x * ((float)Math.PI / 180F));
         float f1 = -Mth.sin((x + z) * ((float)Math.PI / 180F));
         float f2 = Mth.cos(y * ((float)Math.PI / 180F)) * Mth.cos(x * ((float)Math.PI / 180F));
-        arrow.shoot((double)f, (double)f1, (double)f2, velocity, inaccuracy);
-        // v Vanillas poopy method that ADDS the entity's velocity to the arrow they're firing
-//        this.setDeltaMovement(this.getDeltaMovement().add(vec3.x, shooter.onGround() ? (double)0.0F : vec3.y, vec3.z));
+        arrow.shoot(f, f1, f2, velocity, inaccuracy);
     }
 
     @Override

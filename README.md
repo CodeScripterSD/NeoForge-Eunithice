@@ -1,25 +1,34 @@
+# NeoForge Eunithice 1.21.1
 
-Installation information
-=======
+A NeoForge Minecraft Mod
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+_Note: Indev version. All things subject to change._
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## Version 0.1.3
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+### Additions
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+#### Blocks
+- Darkwood
+    - New wood variant, currently missing Sign and Boat
+#### Enchantments
+- "Firing Speed" enchantment
+    - Applies to Shortbows (From this mod)
+    - Levels 1-4
+    - Decreases shot cooldown
+- "Teleportitis" enchantment
+    - Levels 1-4
+    - Inspired by Hypixel Skyblock's "Aspect of the End" item
+    - Right click to teleport forward a short distance proportional to its level
+#### Gear
+- "Experimental Shortbow"
+    - Inspired by Hypixel Skyblock's Juju Shortbow
+    - Shoots arrow instantly upon right click, but has a cool down
+- Shickahoaxe
+  - Paxel/Multitool inspired item that functions as all 4 vanilla tools
+  - Hold shift when right-clicking to switch from Path(Shovel) to Till(Hoe)
+  - Has the combined durability of 4 tools of its tier
+#### Technical
+- Tag for shortbow items so that other mods can allow Eunithice's "Firing Speed" enchantment
+    - No base implementation; must be done by the mod's developer
+- Tag for blocks specifically mineable by Omnitools
