@@ -4,7 +4,7 @@ A NeoForge Minecraft Mod
 
 _Note: Indev version. All things subject to change._
 
-## Version 0.1.4
+## Version 0.1.3
 
 ### Additions
 
