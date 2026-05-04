@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "recipe_unlocked": {
+      "conditions": {
+        "recipe": "eunithice:wooden_omnitool"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/smooth_stone.png",
+    "description": {
+      "translate": "advancements.eunithice.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "eunithice:wooden_omnitool"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.eunithice.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "recipe_unlocked"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

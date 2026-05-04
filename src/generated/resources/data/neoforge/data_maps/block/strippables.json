@@ -1,0 +1,10 @@
+{
+  "values": {
+    "eunithice:darkwood_log": {
+      "stripped_block": "eunithice:stripped_darkwood_log"
+    },
+    "eunithice:darkwood_wood": {
+      "stripped_block": "eunithice:stripped_darkwood_wood"
+    }
+  }
+}

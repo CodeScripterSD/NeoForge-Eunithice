@@ -1,0 +1,33 @@
+{
+  "parent": "eunithice:root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eunithice:iron_omnitool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.eunithice.has_iron_omnitool.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "eunithice:iron_omnitool"
+    },
+    "title": {
+      "translate": "advancements.eunithice.has_iron_omnitool.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

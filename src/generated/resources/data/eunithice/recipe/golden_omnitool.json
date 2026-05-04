@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "minecraft:golden_axe"
+    },
+    "H": {
+      "item": "minecraft:golden_hoe"
+    },
+    "P": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "S": {
+      "item": "minecraft:golden_shovel"
+    }
+  },
+  "pattern": [
+    "ASP",
+    "H# ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "eunithice:golden_omnitool"
+  }
+}

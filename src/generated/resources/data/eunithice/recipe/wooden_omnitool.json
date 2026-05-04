@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "minecraft:wooden_axe"
+    },
+    "H": {
+      "item": "minecraft:wooden_hoe"
+    },
+    "P": {
+      "item": "minecraft:wooden_pickaxe"
+    },
+    "S": {
+      "item": "minecraft:wooden_shovel"
+    }
+  },
+  "pattern": [
+    "ASP",
+    "H# ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "eunithice:wooden_omnitool"
+  }
+}

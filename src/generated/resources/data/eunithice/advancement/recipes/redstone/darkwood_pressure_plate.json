@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_darkwood_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "eunithice:darkwood_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "eunithice:darkwood_pressure_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_darkwood_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "eunithice:darkwood_pressure_plate"
+    ]
+  }
+}
