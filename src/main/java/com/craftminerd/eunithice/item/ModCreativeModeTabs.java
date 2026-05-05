@@ -14,7 +14,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, Eunithice.MODID);
 
     // Creates a creative tab with the id "eunithice:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EUNITHICE_TAB = CREATIVE_MODE_TABS.register("eunithice", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.eunithice")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .icon(() -> ModItems.IRON_OMNITOOL.get().getDefaultInstance())
