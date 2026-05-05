@@ -67,7 +67,7 @@ public class ConfigurationTool extends Item {
                     String property = data.properties().get(holder);
                     if (shouldCycleState) {
                         if (property == null) {
-                            property = collection.iterator().next();
+                            property = collection.getFirst();
                         }
 
                         cycle(configurable, property, player.isSecondaryUseActive(), player.getItemInHand(InteractionHand.OFF_HAND).is(Items.STICK) ? 0.1D : 1D);
