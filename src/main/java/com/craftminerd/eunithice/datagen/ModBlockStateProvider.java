@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -49,6 +50,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.DARKWOOD_PRESSURE_PLATE);
         blockItem(ModBlocks.DARKWOOD_FENCE_GATE);
         blockItem(ModBlocks.DARKWOOD_TRAPDOOR, "_bottom");
+
+        particleOnly(ModBlocks.TRIGGER_BLOCK);
+    }
+
+    private void particleOnly(DeferredBlock<Block> block) {
+        simpleBlock(block.get(),
+                models().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath()).texture("particle", blockTexture(block.get())));
     }
 
     private void foliageBlock(DeferredBlock<Block> block) {

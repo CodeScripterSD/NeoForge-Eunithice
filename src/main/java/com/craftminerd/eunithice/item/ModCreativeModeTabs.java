@@ -41,6 +41,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.DARKWOOD_TRAPDOOR);
                 output.accept(ModBlocks.DARKWOOD_PRESSURE_PLATE);
                 output.accept(ModBlocks.DARKWOOD_BUTTON);
+                output.accept(ModBlocks.TRIGGER_BLOCK);
+                output.accept(ModItems.CONFIG_TOOL);
             }).build());
 
 

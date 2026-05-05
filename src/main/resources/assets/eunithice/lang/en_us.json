@@ -30,5 +30,10 @@
   "advancements.eunithice.root.title": "Eunithice",
   "advancements.eunithice.root.description": "The random oddities someone may find useful",
   "advancements.eunithice.has_iron_omnitool.title": "Isn't It Iron... What?",
-  "advancements.eunithice.has_iron_omnitool.description": "Upgrade your Shickahoaxe"
+  "advancements.eunithice.has_iron_omnitool.description": "Upgrade your Shickahoaxe",
+  "item.eunithice.config_tool": "Config Tool",
+  "item.eunithice.config_tool.empty": "%s has no properties",
+  "item.eunithice.config_tool.select": "selected \"%s\" (%s)",
+  "item.eunithice.config_tool.update": "\"%s\" to %s",
+  "block.eunithice.trigger_block": "Trigger"
 }

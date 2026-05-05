@@ -1,6 +1,7 @@
 package com.craftminerd.eunithice.event;
 
 import com.craftminerd.eunithice.Eunithice;
+import com.craftminerd.eunithice.item.custom.ConfigurationTool;
 import com.craftminerd.eunithice.item.enchantment.ModEnchantments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,6 +24,18 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 @EventBusSubscriber(modid = Eunithice.MODID)
 public class ModEvents {
+    @SubscribeEvent
+    public static void handleLeftClick (PlayerInteractEvent.LeftClickBlock event) {
+        ItemStack itemStack = event.getItemStack();
+        Level level = event.getLevel();
+        if (event.getAction() == PlayerInteractEvent.LeftClickBlock.Action.START && event.getFace() != null && itemStack.getItem() instanceof ConfigurationTool configTool) {
+            event.setCanceled(true);
+            if(!level.isClientSide) {
+                BlockPos pos = event.getPos();
+                configTool.handleInteraction(event.getEntity(), level.getBlockState(pos), level, pos, false, itemStack);
+            }
+        }
+    }
     @SubscribeEvent
     public static void handleRightClick(PlayerInteractEvent.RightClickItem event) {
         ItemStack stack = event.getItemStack();

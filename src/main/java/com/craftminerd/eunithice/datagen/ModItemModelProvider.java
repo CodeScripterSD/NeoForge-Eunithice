@@ -5,13 +5,11 @@ import com.craftminerd.eunithice.block.ModBlocks;
 import com.craftminerd.eunithice.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import org.jetbrains.annotations.UnknownNullability;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -30,8 +28,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.EXPERIMENTAL_SHORTBOW.get());
 
         basicItem(ModBlocks.DARKWOOD_DOOR.asItem());
+        blockItem(ModBlocks.TRIGGER_BLOCK, "leaves");
 
         saplingItem(ModBlocks.DARKWOOD_SAPLING);
+    }
+
+    private ItemModelBuilder blockItem(DeferredBlock<Block> block, String parent) {
+        return withExistingParent(block.getId().getPath(),
+                ResourceLocation.parse("block/" + parent)).texture("all",
+                ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, "block/"+block.getId().getPath()));
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {

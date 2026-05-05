@@ -1,10 +1,17 @@
 package com.craftminerd.eunithice.item;
 
 import com.craftminerd.eunithice.Eunithice;
+import com.craftminerd.eunithice.item.component.ConfigToolState;
+import com.craftminerd.eunithice.item.component.ModDataComponents;
+import com.craftminerd.eunithice.item.custom.ConfigurationTool;
 import com.craftminerd.eunithice.item.custom.ExperimentalBow;
 import com.craftminerd.eunithice.item.custom.OmnitoolItem;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.component.CustomData;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -27,6 +34,11 @@ public class ModItems {
 
     public static final DeferredItem<Item> EXPERIMENTAL_SHORTBOW = ITEMS.register("experimental_bow", () ->
             new ExperimentalBow(new Item.Properties().durability(212)));
+
+    public static final DeferredItem<Item> CONFIG_TOOL = ITEMS.register("config_tool", () ->
+            new ConfigurationTool(new Item.Properties()
+                    .stacksTo(1)
+                    .component(ModDataComponents.CONFIG_TOOL_STATE, ConfigToolState.EMPTY)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

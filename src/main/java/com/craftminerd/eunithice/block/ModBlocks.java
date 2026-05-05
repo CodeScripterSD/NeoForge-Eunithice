@@ -2,6 +2,7 @@ package com.craftminerd.eunithice.block;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.custom.ModFlammableRotatedPillarBlock;
+import com.craftminerd.eunithice.block.custom.TriggerBlock;
 import com.craftminerd.eunithice.item.ModItems;
 import com.craftminerd.eunithice.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -106,8 +108,12 @@ public class ModBlocks {
 
     public static final DeferredBlock<PressurePlateBlock> DARKWOOD_PRESSURE_PLATE = registerBlock("darkwood_pressure_plate", () ->
             new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
-    
 
+    public static final DeferredBlock<Block> TRIGGER_BLOCK = registerBlock("trigger_block", TriggerBlock::new,
+            BlockBehaviour.Properties.of()
+                    .noCollission()
+                    .strength(1f)
+                    .pushReaction(PushReaction.DESTROY));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

@@ -31,6 +31,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DARKWOOD_TRAPDOOR.get());
         add(ModBlocks.DARKWOOD_DOOR.get(), block -> createDoorTable(ModBlocks.DARKWOOD_DOOR.get()));
         add(ModBlocks.DARKWOOD_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.DARKWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
+        dropSelf(ModBlocks.TRIGGER_BLOCK.get());
     }
 
     @Override
