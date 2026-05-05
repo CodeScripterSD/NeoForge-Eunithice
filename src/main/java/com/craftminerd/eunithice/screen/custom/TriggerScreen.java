@@ -112,7 +112,7 @@ public class TriggerScreen extends Screen {
                 this.parseCoordinate(this.posXEdit.getValue(), i), this.parseCoordinate(this.posYEdit.getValue(), i), this.parseCoordinate(this.posZEdit.getValue(), i)
         );
         Vec3 scale = new Vec3(
-                this.parseCoordinate(this.sizeXEdit.getValue(), 1, 2), this.parseCoordinate(this.sizeYEdit.getValue(), 1, 2), this.parseCoordinate(this.sizeZEdit.getValue(), 1, 2)
+                this.parseCoordinate(this.sizeXEdit.getValue(), 1, 5), this.parseCoordinate(this.sizeYEdit.getValue(), 1, 5), this.parseCoordinate(this.sizeZEdit.getValue(), 1, 5)
         );
         PacketDistributor.sendToServer(new TriggerBlockData(
                         this.trigger.getBlockPos(),
