@@ -112,7 +112,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TRIGGER_BLOCK = registerBlock("trigger_block", TriggerBlock::new,
             BlockBehaviour.Properties.of()
                     .noCollission()
-                    .strength(1f)
+                    .instabreak()
                     .pushReaction(PushReaction.DESTROY));
 
     public static void register(IEventBus eventBus) {

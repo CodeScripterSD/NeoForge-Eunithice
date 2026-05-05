@@ -35,5 +35,15 @@
   "item.eunithice.config_tool.empty": "%s has no properties",
   "item.eunithice.config_tool.select": "selected \"%s\" (%s)",
   "item.eunithice.config_tool.update": "\"%s\" to %s",
-  "block.eunithice.trigger_block": "Trigger"
+  "block.eunithice.trigger_block": "Trigger",
+  "container.eunithice.trigger_block": "Trigger",
+  "eunithice.trigger_block.position": "Relative Position",
+  "eunithice.trigger_block.size": "Trigger Size",
+  "eunithice.trigger_block.entity_sensitivity": "Sensitivity Level",
+  "eunithice.trigger_block.show_boundingbox": "Show Bounding Box",
+  "eunithice.trigger_block.mode.everything": "Everything",
+  "eunithice.trigger_block.mode.living": "Living",
+  "eunithice.trigger_block.mode.players": "Players",
+  "eunithice.trigger_block.mode.mobs": "Mobs",
+  "eunithice.trigger_block.mode.armor_stands": "Armor Stands"
 }

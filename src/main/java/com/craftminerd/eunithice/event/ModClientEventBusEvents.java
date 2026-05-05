@@ -23,6 +23,6 @@ public class ModClientEventBusEvents {
     }
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.TRIGGER_BLOCK_ENTITY.get(), TriggerBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.TRIGGER_BLOCK_ENTITY.get(), (context) -> new TriggerBlockRenderer());
     }
 }

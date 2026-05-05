@@ -8,7 +8,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -121,6 +120,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.DARKWOOD_PLANKS), has(ModBlocks.DARKWOOD_PLANKS)).save(recipeOutput);
         buttonBuilder(ModBlocks.DARKWOOD_BUTTON, Ingredient.of(ModBlocks.DARKWOOD_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.DARKWOOD_PLANKS), has(ModBlocks.DARKWOOD_PLANKS)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModBlocks.TRIGGER_BLOCK)
+                .requires(ModTags.Items.GLASS_PANES).requires(ItemTags.WOODEN_PRESSURE_PLATES)
+                .unlockedBy("has_pressure_plate", has(ItemTags.WOODEN_PRESSURE_PLATES)).save(recipeOutput);
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {

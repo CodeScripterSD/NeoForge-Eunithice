@@ -13,9 +13,13 @@ public class ModTags {
         public static final TagKey<Item> OMNITOOLS = tag("omnitools");
         public static final TagKey<Item> SHORTBOW_ENCHANTABLE = tag("shortbow_enchantable");
         public static final TagKey<Item> DARKWOOD_LOGS = tag("darkwood_logs");
+        public static final TagKey<Item> GLASS_PANES = neoforgeTag("glass_panes");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, name));
+        }
+        private static TagKey<Item> neoforgeTag(String name) {
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }
     }
     public static class Blocks {

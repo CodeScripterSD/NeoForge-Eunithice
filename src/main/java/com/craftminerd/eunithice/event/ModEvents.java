@@ -1,8 +1,9 @@
 package com.craftminerd.eunithice.event;
 
 import com.craftminerd.eunithice.Eunithice;
-import com.craftminerd.eunithice.item.custom.ConfigurationTool;
 import com.craftminerd.eunithice.item.enchantment.ModEnchantments;
+import com.craftminerd.eunithice.network.ServerPayloadHandler;
+import com.craftminerd.eunithice.network.TriggerBlockData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -20,22 +21,20 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.MainThreadPayloadHandler;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @EventBusSubscriber(modid = Eunithice.MODID)
 public class ModEvents {
     @SubscribeEvent
-    public static void handleLeftClick (PlayerInteractEvent.LeftClickBlock event) {
-        ItemStack itemStack = event.getItemStack();
-        Level level = event.getLevel();
-        if (event.getAction() == PlayerInteractEvent.LeftClickBlock.Action.START && event.getFace() != null && itemStack.getItem() instanceof ConfigurationTool configTool) {
-            event.setCanceled(true);
-            if(!level.isClientSide) {
-                BlockPos pos = event.getPos();
-                configTool.handleInteraction(event.getEntity(), level.getBlockState(pos), level, pos, false, itemStack);
-            }
-        }
+    public static void register(final RegisterPayloadHandlersEvent event) {
+        final PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToServer(TriggerBlockData.TYPE, TriggerBlockData.STREAM_CODEC,
+                new MainThreadPayloadHandler<>(ServerPayloadHandler::handleDataOnMain));
     }
+
     @SubscribeEvent
     public static void handleRightClick(PlayerInteractEvent.RightClickItem event) {
         ItemStack stack = event.getItemStack();
@@ -55,11 +54,9 @@ public class ModEvents {
             }
             player.teleportTo(raycast.x, raycast.y, raycast.z);
             player.playSound(SoundEvents.PLAYER_TELEPORT, 1, (player.getRandom().nextFloat() - player.getRandom().nextFloat() * 0.1f + 1f));
-//            event.setCanceled(true);
+            event.setCanceled(true);
         }
     }
-
-
 
     private static Vec3 getPOVHitPosition(Level level, LivingEntity entity, ClipContext.Fluid pFluidMode, double distance) {
         // Copied from Item

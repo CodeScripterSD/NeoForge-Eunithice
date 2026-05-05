@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "tag": "c:glass_panes"
+    },
+    {
+      "tag": "minecraft:wooden_pressure_plates"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "eunithice:trigger_block"
+  }
+}
