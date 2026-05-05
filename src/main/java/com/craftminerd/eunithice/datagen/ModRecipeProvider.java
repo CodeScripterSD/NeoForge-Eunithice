@@ -124,6 +124,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModBlocks.TRIGGER_BLOCK)
                 .requires(ModTags.Items.GLASS_PANES).requires(ItemTags.WOODEN_PRESSURE_PLATES)
                 .unlockedBy("has_pressure_plate", has(ItemTags.WOODEN_PRESSURE_PLATES)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CONFIG_TOOL)
+                .requires(Items.IRON_NUGGET).requires(Items.STICK)
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {
