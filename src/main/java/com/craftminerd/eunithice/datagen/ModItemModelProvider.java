@@ -31,6 +31,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlocks.TRIGGER_BLOCK, "leaves");
 
         saplingItem(ModBlocks.DARKWOOD_SAPLING);
+
+        handheldItem(ModItems.CONFIG_TOOL.get());
     }
 
     private ItemModelBuilder blockItem(DeferredBlock<Block> block, String parent) {
