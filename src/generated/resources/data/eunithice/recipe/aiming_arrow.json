@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "minecraft:redstone_torch"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "S": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "E",
+    "S",
+    "F"
+  ],
+  "result": {
+    "count": 1,
+    "id": "eunithice:aiming_arrow"
+  }
+}

@@ -41,6 +41,7 @@ public class AimingArrow extends AbstractArrow {
         Vec3 vec3 = this.getDeltaMovement();
         if (TARGET != null && this.getOwner() != null && ((LivingEntity)this.getOwner()).hasLineOfSight(TARGET)) {
             vec3 = vec3.add(aimAt(EntityAnchorArgument.Anchor.EYES, TARGET.position().add(0, TARGET.getBbHeight() / 2f, 0)));
+            vec3 = vec3.multiply(0.5d, 0.5d, 0.5d);
             this.setDeltaMovement(vec3);
         }
         super.tick();

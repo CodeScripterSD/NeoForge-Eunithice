@@ -127,6 +127,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CONFIG_TOOL)
                 .requires(Items.IRON_NUGGET).requires(Items.STICK)
                 .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AIMING_ARROW)
+                .pattern("E")
+                .pattern("S")
+                .pattern("F")
+                .define('E', Items.REDSTONE_TORCH)
+                .define('S', Items.AMETHYST_SHARD)
+                .define('F', Items.FEATHER)
+                .unlockedBy("has_bow", has(ItemTags.BOW_ENCHANTABLE))
+                .save(recipeOutput);
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {
