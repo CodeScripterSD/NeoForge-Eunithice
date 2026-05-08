@@ -1,13 +1,16 @@
 package com.craftminerd.eunithice.item;
 
 import com.craftminerd.eunithice.Eunithice;
+import com.craftminerd.eunithice.entity.ModEntities;
 import com.craftminerd.eunithice.item.component.ConfigToolState;
 import com.craftminerd.eunithice.item.component.ModDataComponents;
+import com.craftminerd.eunithice.item.custom.AimingArrowItem;
 import com.craftminerd.eunithice.item.custom.ConfigurationTool;
 import com.craftminerd.eunithice.item.custom.ExperimentalBow;
 import com.craftminerd.eunithice.item.custom.OmnitoolItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -34,6 +37,12 @@ public class ModItems {
             new ConfigurationTool(new Item.Properties()
                     .stacksTo(1)
                     .component(ModDataComponents.CONFIG_TOOL_STATE, ConfigToolState.EMPTY)));
+
+    public static final DeferredItem<Item> POSTAR_SPAWN_EGG = ITEMS.register("postar_spawn_egg", () ->
+            new DeferredSpawnEggItem(ModEntities.POSTAR, 0x031ab3, 0x57a231, new Item.Properties()));
+
+    public static final DeferredItem<Item> AIMING_ARROW = ITEMS.register("aiming_arrow", () ->
+            new AimingArrowItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

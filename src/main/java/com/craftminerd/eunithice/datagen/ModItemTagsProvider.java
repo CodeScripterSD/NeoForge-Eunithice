@@ -53,5 +53,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.SHORTBOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
         tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
+        tag(ItemTags.ARROWS).add(ModItems.AIMING_ARROW.get());
     }
 }

@@ -19,13 +19,6 @@ public class ModCreativeModeTabs {
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .icon(() -> ModItems.IRON_OMNITOOL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ModItems.GOLDEN_OMNITOOL);
-                output.accept(ModItems.WOODEN_OMNITOOL);
-                output.accept(ModItems.IRON_OMNITOOL);
-                output.accept(ModItems.STONE_OMNITOOL);
-                output.accept(ModItems.DIAMOND_OMNITOOL);
-                output.accept(ModItems.NETHERITE_OMNITOOL);
-                output.accept(ModItems.EXPERIMENTAL_SHORTBOW);
                 output.accept(ModBlocks.DARKWOOD_SAPLING);
                 output.accept(ModBlocks.DARKWOOD_LEAVES);
                 output.accept(ModBlocks.DARKWOOD_LOG);
@@ -42,7 +35,20 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.DARKWOOD_PRESSURE_PLATE);
                 output.accept(ModBlocks.DARKWOOD_BUTTON);
                 output.accept(ModBlocks.TRIGGER_BLOCK);
+                output.accept(ModBlocks.SMELTER_CONTROLLER);
+                output.accept(ModBlocks.SMELTER_INVENTORY);
+                output.accept(ModBlocks.SMELTER_HOUSING);
+                output.accept(ModItems.GOLDEN_OMNITOOL);
+                output.accept(ModItems.WOODEN_OMNITOOL);
+                output.accept(ModItems.IRON_OMNITOOL);
+                output.accept(ModItems.STONE_OMNITOOL);
+                output.accept(ModItems.DIAMOND_OMNITOOL);
+                output.accept(ModItems.NETHERITE_OMNITOOL);
+                output.accept(ModItems.EXPERIMENTAL_SHORTBOW);
+                output.accept(ModItems.AIMING_ARROW);
                 output.accept(ModItems.CONFIG_TOOL);
+
+                output.accept(ModItems.POSTAR_SPAWN_EGG);
             }).build());
 
 

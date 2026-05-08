@@ -165,6 +165,7 @@ public class TriggerScreen extends Screen {
         this.sizeXEdit.render(guiGraphics, mouseX, mouseY, partialTick);
         this.sizeYEdit.render(guiGraphics, mouseX, mouseY, partialTick);
         this.sizeZEdit.render(guiGraphics, mouseX, mouseY, partialTick);
+        guiGraphics.drawString(this.font, SHOW_BOUNDING_BOX_LABEL, this.width / 2 + 154 - this.font.width(SHOW_BOUNDING_BOX_LABEL), 70, 10526880);
     }
 
     @Override

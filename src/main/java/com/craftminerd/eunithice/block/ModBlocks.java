@@ -2,6 +2,7 @@ package com.craftminerd.eunithice.block;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.custom.ModFlammableRotatedPillarBlock;
+import com.craftminerd.eunithice.block.custom.SmelterControllerBlock;
 import com.craftminerd.eunithice.block.custom.TriggerBlock;
 import com.craftminerd.eunithice.item.ModItems;
 import com.craftminerd.eunithice.worldgen.tree.ModTreeGrowers;
@@ -114,6 +115,10 @@ public class ModBlocks {
                     .noCollission()
                     .instabreak()
                     .pushReaction(PushReaction.DESTROY));
+
+    public static final DeferredBlock<Block> SMELTER_CONTROLLER = registerBlock("smelter_controller", SmelterControllerBlock::new);
+    public static final DeferredBlock<Block> SMELTER_INVENTORY = registerSimpleBlock("smelter_inventory");
+    public static final DeferredBlock<Block> SMELTER_HOUSING = registerSimpleBlock("smelter_housing");
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

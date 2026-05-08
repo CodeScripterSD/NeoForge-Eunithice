@@ -4,6 +4,8 @@ import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.ModBlocks;
 import com.craftminerd.eunithice.block.blockentity.ModBlockEntities;
 import com.craftminerd.eunithice.block.renderer.TriggerBlockRenderer;
+import com.craftminerd.eunithice.entity.ModEntities;
+import com.craftminerd.eunithice.entity.renderer.AimingArrowRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,5 +26,6 @@ public class ModClientEventBusEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.TRIGGER_BLOCK_ENTITY.get(), (context) -> new TriggerBlockRenderer());
+        event.registerEntityRenderer(ModEntities.AIMING_ARROW.get(), AimingArrowRenderer::new);
     }
 }

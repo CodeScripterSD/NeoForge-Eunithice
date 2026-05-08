@@ -33,7 +33,8 @@ public class TriggerBlockRenderer implements BlockEntityRenderer<TriggerBlockEnt
             double yB = cornerB.y();
             double zB = cornerB.z();
             VertexConsumer consumer = bufferSource.getBuffer(RenderType.lines());
-            LevelRenderer.renderLineBox(poseStack, consumer, x, y, z, xB, yB, zB, 0.5F, 1.0F, 0.5F, 1.0F, 0.0f, 0.0f, 1.0f);
+            // TODO: Change color based on entity selector
+            LevelRenderer.renderLineBox(poseStack, consumer, x, y, z, xB, yB, zB, 0.5F, 1.0F, 0.5F, 1.0F);
             double a = 0.25F;
             double b = 0.75F;
             LevelRenderer.renderLineBox(poseStack, consumer, a, a, a, b, b, b, 1.0F, 0.0F, 0.0F, 1F);

@@ -45,5 +45,12 @@
   "eunithice.trigger_block.mode.living": "Living",
   "eunithice.trigger_block.mode.players": "Players",
   "eunithice.trigger_block.mode.mobs": "Mobs",
-  "eunithice.trigger_block.mode.armor_stands": "Armor Stands"
+  "eunithice.trigger_block.mode.armor_stands": "Armor Stands",
+  "item.eunithice.postar_spawn_egg": "Postar Spawn Egg",
+  "entity.eunithice.postar": "Postar",
+  "block.eunithice.smelter_housing": "Smelter Housing",
+  "block.eunithice.smelter_inventory": "Smelter Inventory Block",
+  "block.eunithice.smelter_controller": "Smelter Controller",
+  "item.eunithice.aiming_arrow": "Aiming Arrow",
+  "entity.eunithice.aiming_arrow": "Aiming Arrow"
 }

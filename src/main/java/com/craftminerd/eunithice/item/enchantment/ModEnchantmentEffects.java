@@ -8,11 +8,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModEnchantmentEffects {
-//    public static final DeferredRegister<MapCodec<? extends EnchantmentEntityEffect>> ENTITY_ENCHANTMENT_EFFECTS =
-//            DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Eunithice.MODID);
-//
-//
-//    public static void register(IEventBus eventBus) {
-//        ENTITY_ENCHANTMENT_EFFECTS.register(eventBus);
-//    }
+    public static final DeferredRegister<MapCodec<? extends EnchantmentEntityEffect>> ENTITY_ENCHANTMENT_EFFECTS =
+            DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Eunithice.MODID);
+
+
+    public static void register(IEventBus eventBus) {
+        ENTITY_ENCHANTMENT_EFFECTS.register(eventBus);
+    }
 }

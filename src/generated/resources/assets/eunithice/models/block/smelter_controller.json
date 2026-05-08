@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "eunithice:block/smelter_controller",
+    "side": "eunithice:block/smelter_housing",
+    "top": "eunithice:block/smelter_housing"
+  }
+}

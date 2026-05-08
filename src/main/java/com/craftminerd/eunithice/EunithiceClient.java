@@ -1,6 +1,8 @@
 package com.craftminerd.eunithice;
 
-import net.minecraft.client.Minecraft;
+import com.craftminerd.eunithice.entity.ModEntities;
+import com.craftminerd.eunithice.entity.client.PostarRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -25,7 +27,6 @@ public class EunithiceClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         // Some client setup code
-        Eunithice.LOGGER.info("HELLO FROM CLIENT SETUP");
-        Eunithice.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        EntityRenderers.register(ModEntities.POSTAR.get(), PostarRenderer::new);
     }
 }

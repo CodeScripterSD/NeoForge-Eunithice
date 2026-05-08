@@ -2,17 +2,19 @@ package com.craftminerd.eunithice.datagen;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -44,6 +46,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_DARKWOOD_LOG);
         blockItem(ModBlocks.STRIPPED_DARKWOOD_WOOD);
 
+        blockWithItem(ModBlocks.SMELTER_HOUSING);
+        horizontallyRotatedBlock(ModBlocks.SMELTER_CONTROLLER, blockTexture(ModBlocks.SMELTER_CONTROLLER.get()), blockTexture(ModBlocks.SMELTER_HOUSING.get()));
+        blockWithItem(ModBlocks.SMELTER_INVENTORY);
+
+        blockItem(ModBlocks.SMELTER_CONTROLLER);
         blockItem(ModBlocks.DARKWOOD_STAIRS);
         blockItem(ModBlocks.DARKWOOD_SLAB);
         blockItem(ModBlocks.DARKWOOD_PRESSURE_PLATE);
@@ -51,6 +58,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.DARKWOOD_TRAPDOOR, "_bottom");
 
         particleOnly(ModBlocks.TRIGGER_BLOCK);
+    }
+
+    private void horizontallyRotatedBlock(DeferredBlock<Block> block, ResourceLocation front, ResourceLocation others) {
+        horizontallyRotatedBlock(block.get(),
+                $ -> models().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath())
+                        .parent(new ModelFile.UncheckedModelFile(ResourceLocation.parse("minecraft:block/orientable")))
+                        .texture("front", front)
+                        .texture("side", others)
+                        .texture("top", others));
+    }
+
+    private void horizontallyRotatedBlock(Block block, Function<BlockState, ModelFile> it) {
+        getVariantBuilder(block)
+                .forAllStates(state -> {
+                    Direction dir = state.getValue(HorizontalDirectionalBlock.FACING);
+                    return ConfiguredModel.builder()
+                            .modelFile(it.apply(state))
+                            .rotationY(((int) dir.toYRot() - 180) % 360)
+                            .build();
+                });
     }
 
     private void particleOnly(DeferredBlock<Block> block) {
