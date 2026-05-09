@@ -5,7 +5,7 @@ import com.craftminerd.eunithice.block.ModBlocks;
 import com.craftminerd.eunithice.block.blockentity.ModBlockEntities;
 import com.craftminerd.eunithice.block.renderer.TriggerBlockRenderer;
 import com.craftminerd.eunithice.entity.ModEntities;
-import com.craftminerd.eunithice.entity.renderer.AimingArrowRenderer;
+import com.craftminerd.eunithice.entity.client.AimingArrowRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

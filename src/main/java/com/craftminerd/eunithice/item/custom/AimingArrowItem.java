@@ -1,6 +1,6 @@
 package com.craftminerd.eunithice.item.custom;
 
-import com.craftminerd.eunithice.entity.projectile.AimingArrow;
+import com.craftminerd.eunithice.entity.custom.projectile.AimingArrow;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.world.entity.LivingEntity;

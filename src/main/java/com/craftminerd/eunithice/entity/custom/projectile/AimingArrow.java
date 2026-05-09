@@ -1,4 +1,4 @@
-package com.craftminerd.eunithice.entity.projectile;
+package com.craftminerd.eunithice.entity.custom.projectile;
 
 import com.craftminerd.eunithice.entity.ModEntities;
 import com.craftminerd.eunithice.item.ModItems;

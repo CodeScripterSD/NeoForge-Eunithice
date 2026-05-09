@@ -2,7 +2,7 @@ package com.craftminerd.eunithice.entity;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.entity.custom.PostarEntity;
-import com.craftminerd.eunithice.entity.projectile.AimingArrow;
+import com.craftminerd.eunithice.entity.custom.projectile.AimingArrow;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
