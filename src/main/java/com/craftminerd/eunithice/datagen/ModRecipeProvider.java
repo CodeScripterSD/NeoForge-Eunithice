@@ -127,7 +127,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CONFIG_TOOL)
                 .requires(Items.IRON_NUGGET).requires(Items.STICK)
                 .unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AIMING_ARROW)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.AIMING_ARROW, 4)
                 .pattern("E")
                 .pattern("S")
                 .pattern("F")

@@ -33,7 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         saplingItem(ModBlocks.DARKWOOD_SAPLING);
 
         handheldItem(ModItems.CONFIG_TOOL.get());
-        withExistingParent(ModItems.AIMING_ARROW.getId().getPath(), mcLoc("item/arrow"));
+        basicItem(ModItems.AIMING_ARROW.asItem());
 
         withExistingParent(ModItems.POSTAR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
