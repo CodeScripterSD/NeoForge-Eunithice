@@ -1,12 +1,15 @@
 package com.craftminerd.eunithice.block.custom;
 
+import com.craftminerd.eunithice.ClientConfig;
 import com.craftminerd.eunithice.block.blockentity.ModBlockEntities;
 import com.craftminerd.eunithice.block.blockentity.TriggerBlockEntity;
 import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
@@ -21,7 +24,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -143,9 +149,25 @@ public class TriggerBlock extends BaseEntityBlock implements SimpleWaterloggedBl
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        // Should probably always show a box, in case the player wants to destroy it but doesn't have another one in their inventory
-        return Shapes.box(0.2D, 0.2D, 0.2D, 0.8D, 0.8D, 0.8D);
-//        return (context.isHoldingItem(ModBlocks.TRIGGER_BLOCK.asItem()) || context.isHoldingItem(ModItems.CONFIG_TOOL.get())) ? Shapes.box(0.2D, 0.2D, 0.2D, 0.8D, 0.8D, 0.8D) : Shapes.empty();
+        if (ClientConfig.ALWAYS_SHOW_HITBOX.get() || context.isHoldingItem(this.asItem()))
+            return Shapes.box(0.2D, 0.2D, 0.2D, 0.8D, 0.8D, 0.8D);
+        else {
+            for (String i : ClientConfig.SHOWS_HITBOX.get()) {
+                if (context.isHoldingItem(BuiltInRegistries.ITEM.get(ResourceLocation.parse(i))))
+                    return Shapes.box(0.2D, 0.2D, 0.2D, 0.8D, 0.8D, 0.8D);
+            }
+            return Shapes.empty();
+        }
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
+    @Override
+    protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
     }
 
     @Override

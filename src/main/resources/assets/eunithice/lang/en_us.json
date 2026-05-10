@@ -52,5 +52,15 @@
   "block.eunithice.smelter_inventory": "Smelter Inventory Block",
   "block.eunithice.smelter_controller": "Smelter Controller",
   "item.eunithice.aiming_arrow": "Aiming Arrow",
-  "entity.eunithice.aiming_arrow": "Aiming Arrow"
+  "entity.eunithice.aiming_arrow": "Aiming Arrow",
+  "eunithice.configuration.title": "Eunithice Configs",
+  "eunithice.configuration.section.eunithice.common.toml": "Common",
+  "eunithice.configuration.section.eunithice.common.toml.title": "Eunithice Common Configs",
+  "eunithice.configuration.itemsShowBreakHitbox": "Shows Break Hitbox",
+  "eunithice.configuration.itemsShowBreakHitbox.tooltip": "What items will show the break hitbox of invisible Eunithice blocks.",
+  "eunithice.configuration.itemsShowBreakHitbox.button": "Edit",
+  "eunithice.configuration.alwaysShowBreakHitbox": "Always Show Break Hitbox",
+  "eunithice.configuration.alwaysShowBreakHitbox.tooltip": "Always show the break hitbox of invisible blocks.",
+  "eunithice.configuration.section.eunithice.client.toml": "Client",
+  "eunithice.configuration.section.eunithice.client.toml.title": "Eunithice Client Configs"
 }

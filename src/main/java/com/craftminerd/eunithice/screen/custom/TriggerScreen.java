@@ -12,12 +12,15 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+@OnlyIn(Dist.CLIENT)
 public class TriggerScreen extends Screen {
     private static final Component POSITION_LABEL = Component.translatable("eunithice.trigger_block.position");
     private static final Component SIZE_LABEL = Component.translatable("eunithice.trigger_block.size");
