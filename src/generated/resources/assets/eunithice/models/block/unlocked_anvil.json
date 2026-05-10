@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_anvil",
+  "textures": {
+    "body": "eunithice:block/unlocked_anvil",
+    "particle": "eunithice:block/unlocked_anvil",
+    "top": "eunithice:block/unlocked_anvil_top"
+  }
+}

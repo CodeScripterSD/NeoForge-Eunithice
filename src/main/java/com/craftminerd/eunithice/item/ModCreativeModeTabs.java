@@ -38,6 +38,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SMELTER_CONTROLLER);
                 output.accept(ModBlocks.SMELTER_INVENTORY);
                 output.accept(ModBlocks.SMELTER_HOUSING);
+                output.accept(ModBlocks.UNLOCKED_ANVIL);
                 output.accept(ModItems.GOLDEN_OMNITOOL);
                 output.accept(ModItems.WOODEN_OMNITOOL);
                 output.accept(ModItems.IRON_OMNITOOL);

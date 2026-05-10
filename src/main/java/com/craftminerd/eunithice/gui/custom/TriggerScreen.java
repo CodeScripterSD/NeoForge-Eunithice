@@ -1,4 +1,4 @@
-package com.craftminerd.eunithice.screen.custom;
+package com.craftminerd.eunithice.gui.custom;
 
 import com.craftminerd.eunithice.block.ModBlocks;
 import com.craftminerd.eunithice.block.blockentity.TriggerBlockEntity;

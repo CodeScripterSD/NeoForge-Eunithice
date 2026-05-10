@@ -136,6 +136,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('F', Items.FEATHER)
                 .unlockedBy("has_bow", has(ItemTags.BOW_ENCHANTABLE))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.UNLOCKED_ANVIL)
+                .pattern("DDD")
+                .pattern(" a ")
+                .pattern("iii")
+                .define('D', Items.DIAMOND_BLOCK)
+                .define('a', ItemTags.ANVIL)
+                .define('i', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                .save(recipeOutput);
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {

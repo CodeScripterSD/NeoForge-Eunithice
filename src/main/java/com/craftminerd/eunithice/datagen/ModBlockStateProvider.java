@@ -58,6 +58,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.DARKWOOD_TRAPDOOR, "_bottom");
 
         particleOnly(ModBlocks.TRIGGER_BLOCK);
+        anvilBlock(ModBlocks.UNLOCKED_ANVIL, blockTexture(ModBlocks.UNLOCKED_ANVIL.get()));
+        blockItem(ModBlocks.UNLOCKED_ANVIL);
+    }
+    private void anvilBlock(DeferredBlock<Block> block, ResourceLocation anvil) {
+        horizontallyRotatedBlock(block.get(),
+                $ -> models().getBuilder(BuiltInRegistries.BLOCK.getKey(block.get()).getPath())
+                        .parent(new ModelFile.UncheckedModelFile(ResourceLocation.parse("minecraft:block/template_anvil")))
+                        .texture("particle", anvil)
+                        .texture("body", anvil)
+                        .texture("top", anvil + "_top"));
     }
 
     private void horizontallyRotatedBlock(DeferredBlock<Block> block, ResourceLocation front, ResourceLocation others) {

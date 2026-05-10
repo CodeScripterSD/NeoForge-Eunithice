@@ -53,6 +53,7 @@
   "block.eunithice.smelter_controller": "Smelter Controller",
   "item.eunithice.aiming_arrow": "Aiming Arrow",
   "entity.eunithice.aiming_arrow": "Aiming Arrow",
+  "block.eunithice.unlocked_anvil": "Unlocked Anvil",
   "eunithice.configuration.title": "Eunithice Configs",
   "eunithice.configuration.section.eunithice.common.toml": "Common",
   "eunithice.configuration.section.eunithice.common.toml.title": "Eunithice Common Configs",

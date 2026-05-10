@@ -2,6 +2,7 @@ package com.craftminerd.eunithice.event;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.item.enchantment.ModEnchantments;
+import com.craftminerd.eunithice.network.RenameItemPacket;
 import com.craftminerd.eunithice.network.ServerPayloadHandler;
 import com.craftminerd.eunithice.network.TriggerBlockData;
 import net.minecraft.core.BlockPos;
@@ -32,7 +33,9 @@ public class ModEvents {
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar("1");
         registrar.playToServer(TriggerBlockData.TYPE, TriggerBlockData.STREAM_CODEC,
-                new MainThreadPayloadHandler<>(ServerPayloadHandler::handleDataOnMain));
+                new MainThreadPayloadHandler<>(ServerPayloadHandler::handleTriggerData));
+        registrar.playToServer(RenameItemPacket.TYPE, RenameItemPacket.STREAM_CODEC,
+                new MainThreadPayloadHandler<>(ServerPayloadHandler::handleRenameItem));
     }
 
     @SubscribeEvent

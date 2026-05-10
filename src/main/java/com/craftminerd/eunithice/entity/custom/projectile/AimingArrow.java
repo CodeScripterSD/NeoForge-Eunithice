@@ -37,7 +37,7 @@ public class AimingArrow extends AbstractArrow {
     @Override
     public void tick() {
 
-        LivingEntity TARGET = level().getNearestEntity(level().getEntitiesOfClass(Mob.class, getBoundingBox().inflate(10d)), TargetingConditions.forCombat(), (LivingEntity) this.getOwner(), this.getX(), this.getY(), this.getZ());
+        LivingEntity TARGET = level().getNearestEntity(level().getEntitiesOfClass(Mob.class, getBoundingBox().inflate(5d)), TargetingConditions.forCombat(), (LivingEntity) this.getOwner(), this.getX(), this.getY(), this.getZ());
         Vec3 vec3 = this.getDeltaMovement();
         if (TARGET != null && this.getOwner() != null && ((LivingEntity)this.getOwner()).hasLineOfSight(TARGET)) {
             vec3 = vec3.add(aimAt(EntityAnchorArgument.Anchor.EYES, TARGET.position().add(0, TARGET.getBbHeight() / 2f, 0)));

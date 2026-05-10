@@ -1,8 +1,8 @@
 package com.craftminerd.eunithice.block.blockentity;
 
 import com.craftminerd.eunithice.block.custom.TriggerBlock;
+import com.craftminerd.eunithice.gui.custom.TriggerScreen;
 import com.craftminerd.eunithice.network.TriggerBlockData;
-import com.craftminerd.eunithice.screen.custom.TriggerScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

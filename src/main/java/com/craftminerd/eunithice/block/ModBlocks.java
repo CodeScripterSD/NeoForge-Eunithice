@@ -4,6 +4,7 @@ import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.custom.ModFlammableRotatedPillarBlock;
 import com.craftminerd.eunithice.block.custom.SmelterControllerBlock;
 import com.craftminerd.eunithice.block.custom.TriggerBlock;
+import com.craftminerd.eunithice.block.custom.UnlockedAnvilBlock;
 import com.craftminerd.eunithice.item.ModItems;
 import com.craftminerd.eunithice.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
@@ -120,6 +122,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SMELTER_INVENTORY = registerSimpleBlock("smelter_inventory");
     public static final DeferredBlock<Block> SMELTER_HOUSING = registerSimpleBlock("smelter_housing");
 
+    public static final DeferredBlock<Block> UNLOCKED_ANVIL = registerRarityBlock("unlocked_anvil", () ->
+                    new UnlockedAnvilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)), Rarity.RARE);
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
@@ -135,6 +140,12 @@ public class ModBlocks {
 
     private static <T extends Block> DeferredBlock<T> registerBlockNoItem(String name, Function<BlockBehaviour.Properties, T> func) {
         return registerBlockNoItem(name, func, BlockBehaviour.Properties.of());
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerRarityBlock(String name, Supplier<T> block, Rarity rarity) {
+        DeferredBlock<T> ret = BLOCKS.register(name, block);
+        registerBlockItem(ret, new Item.Properties().rarity(rarity));
+        return ret;
     }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -179,6 +190,10 @@ public class ModBlocks {
         DeferredBlock<Block> ret = BLOCKS.registerSimpleBlock(name, props);
         registerBlockItem(ret);
         return ret;
+    }
+
+    private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(DeferredBlock<T> block, Item.Properties properties) {
+        return ModItems.ITEMS.registerSimpleBlockItem(block, properties);
     }
 
     private static <T extends Block> DeferredItem<BlockItem> registerBlockItem(DeferredBlock<T> block) {

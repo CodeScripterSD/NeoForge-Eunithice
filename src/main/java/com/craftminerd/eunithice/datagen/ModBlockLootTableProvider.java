@@ -36,6 +36,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.DARKWOOD_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.DARKWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
         dropSelf(ModBlocks.TRIGGER_BLOCK.get());
+        dropSelf(ModBlocks.UNLOCKED_ANVIL.get());
     }
 
     @Override

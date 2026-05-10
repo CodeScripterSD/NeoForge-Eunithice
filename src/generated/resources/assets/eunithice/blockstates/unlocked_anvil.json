@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "eunithice:block/unlocked_anvil",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "eunithice:block/unlocked_anvil"
+    },
+    "facing=south": {
+      "model": "eunithice:block/unlocked_anvil",
+      "y": -180
+    },
+    "facing=west": {
+      "model": "eunithice:block/unlocked_anvil",
+      "y": -90
+    }
+  }
+}
