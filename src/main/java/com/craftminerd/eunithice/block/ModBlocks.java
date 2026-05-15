@@ -2,7 +2,7 @@ package com.craftminerd.eunithice.block;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.custom.ModFlammableRotatedPillarBlock;
-import com.craftminerd.eunithice.block.custom.SmelterControllerBlock;
+import com.craftminerd.eunithice.block.custom.SmelteryControllerBlock;
 import com.craftminerd.eunithice.block.custom.TriggerBlock;
 import com.craftminerd.eunithice.block.custom.UnlockedAnvilBlock;
 import com.craftminerd.eunithice.item.ModItems;
@@ -118,9 +118,9 @@ public class ModBlocks {
                     .instabreak()
                     .pushReaction(PushReaction.DESTROY));
 
-    public static final DeferredBlock<Block> SMELTER_CONTROLLER = registerBlock("smelter_controller", SmelterControllerBlock::new);
-    public static final DeferredBlock<Block> SMELTER_INVENTORY = registerSimpleBlock("smelter_inventory");
-    public static final DeferredBlock<Block> SMELTER_HOUSING = registerSimpleBlock("smelter_housing");
+    public static final DeferredBlock<Block> SMELTERY_CONTROLLER = registerBlock("smeltery_controller", SmelteryControllerBlock::new);
+    public static final DeferredBlock<Block> SMELTERY_INVENTORY = registerSimpleBlock("smeltery_inventory");
+    public static final DeferredBlock<Block> SMELTERY_HOUSING = registerSimpleBlock("smeltery_housing");
 
     public static final DeferredBlock<Block> UNLOCKED_ANVIL = registerRarityBlock("unlocked_anvil", () ->
                     new UnlockedAnvilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)), Rarity.RARE);

@@ -29,9 +29,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.DARKWOOD_FENCE.get());
         dropSelf(ModBlocks.DARKWOOD_FENCE_GATE.get());
         dropSelf(ModBlocks.DARKWOOD_TRAPDOOR.get());
-        dropSelf(ModBlocks.SMELTER_HOUSING.get());
-        dropSelf(ModBlocks.SMELTER_INVENTORY.get());
-        dropSelf(ModBlocks.SMELTER_CONTROLLER.get());
+        dropSelf(ModBlocks.SMELTERY_HOUSING.get());
+        dropSelf(ModBlocks.SMELTERY_INVENTORY.get());
+        dropSelf(ModBlocks.SMELTERY_CONTROLLER.get());
         add(ModBlocks.DARKWOOD_DOOR.get(), block -> createDoorTable(ModBlocks.DARKWOOD_DOOR.get()));
         add(ModBlocks.DARKWOOD_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.DARKWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 

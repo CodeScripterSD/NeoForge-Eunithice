@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "eunithice:block/smeltery_controller",
+    "side": "eunithice:block/smeltery_housing",
+    "top": "eunithice:block/smeltery_housing"
+  }
+}

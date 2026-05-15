@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "eunithice:block/smelter_inventory"
+    "all": "eunithice:block/smeltery_inventory"
   }
 }

@@ -54,5 +54,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.Items.SHORTBOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
         tag(ItemTags.BOW_ENCHANTABLE).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
         tag(ItemTags.ARROWS).add(ModItems.AIMING_ARROW.get());
+
+        tag(ModTags.Items.C_WOODEN_FENCE_GATES).add(ModBlocks.DARKWOOD_FENCE_GATE.asItem());
+        tag(ModTags.Items.C_STRIPPED).add(ModBlocks.STRIPPED_DARKWOOD_LOG.asItem());
+        tag(ModTags.Items.C_STRIPPED_WOOD).add(ModBlocks.STRIPPED_DARKWOOD_WOOD.asItem());
+        tag(ModTags.Items.C_BOWS).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
+        tag(ModTags.Items.C_MINING).addTag(ModTags.Items.OMNITOOLS);
+        tag(ItemTags.SAPLINGS).add(ModBlocks.DARKWOOD_SAPLING.asItem());
     }
 }

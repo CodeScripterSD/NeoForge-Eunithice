@@ -2,8 +2,9 @@ package com.craftminerd.eunithice.block.blockentity;
 
 import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.block.ModBlocks;
+import com.craftminerd.eunithice.util.ModTags;
+import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -15,12 +16,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SmelterControllerBlockEntity extends BlockEntity {
+public class SmelteryControllerBlockEntity extends BlockEntity {
     // All units same fuel value.
     // All units have independent time remaining to result.
     // List<Integer> progressLevels -> length equal to number of units.
-    // Deciding whether I want to make it check its bounds like the Tinker's Construct Smeltery, or have predefined confines like Immersive Engineering coke smelter.
-    // Probably latter, but potentially upgrade to adjustable bounds once we have a working prototype.
     // Assuming a 3x3x3, we need at most 27 slots for input, 27 slots for output, and 1 slot for fuel.
     // That's a lot of slots, so I'll need to figure out a way of mathematically determining screen and menu proportions that accurately places the slots in the correct positions.
     // We will have 3 types of block relevant to the smelter array.
@@ -44,76 +43,48 @@ public class SmelterControllerBlockEntity extends BlockEntity {
     private int maxProgress;
     private final ArrayList<Boolean> slotsActivelyCooking = new ArrayList<>();
     private boolean isAssembled;
-    public SmelterControllerBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlockEntities.SMELTER_CONTROLLER_BLOCK_ENTITY.get(), pos, blockState);
+    private final List<BlockPos> effectBlocks = Lists.newArrayList();
+    public SmelteryControllerBlockEntity(BlockPos pos, BlockState blockState) {
+        super(ModBlockEntities.SMELTERY_CONTROLLER_BLOCK_ENTITY.get(), pos, blockState);
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, SmelterControllerBlockEntity entity) {
+    public static void serverTick(Level level, BlockPos pos, BlockState state, SmelteryControllerBlockEntity entity) {
         // run if we are assembled
         // make sure we should still be assembled
         // tick progresses and handle craft
-        if (entity.isAssembled()) {
-            if (!entity.checkShouldBeAssembled()) {
-                entity.setChanged();
-                return;
-            }
-
+        long i = level.getGameTime();
+        List<BlockPos> list = entity.effectBlocks;
+        if (i % 40L == 0L) {
+            entity.isAssembled = entity.updateShape(level, pos.relative(state.getValue(HorizontalDirectionalBlock.FACING).getOpposite()), list);
         }
     }
-
-    public boolean checkShouldBeAssembled() {
-        Level level = this.getLevel();
-        if (level == null || level.isClientSide) return false;
-        BlockState state = level.getBlockState(this.getBlockPos());
-        if (!state.is(ModBlocks.SMELTER_CONTROLLER)) return false;
-        Eunithice.LOGGER.info("Definitely should check");
-        Direction searchDirection = state.getValue(HorizontalDirectionalBlock.FACING).getOpposite();
-        BlockPos center = this.getBlockPos().relative(searchDirection);
-        boolean old = this.isAssembled;
-        boolean a = search3x3(level, center, true);
-        boolean b = search3x3(level, center, false);
-        boolean c = search3x3(level, center, false);
-        Eunithice.LOGGER.info("a {} b {} c {}", a, b, c);
-        boolean now = a && b && c;
-        if (old != now) {
-            this.isAssembled = now;
-            setChanged();
-        }
-        return this.isAssembled;
-    }
-
-    private boolean search3x3(Level level, BlockPos pos, boolean flag) {
-        if (flag) {
-            int countInventories = 0;
-            int countControllers = 0;
-            for (int i = -1; i < 1; i++) {
-                for (int j = -1; j < 1; j++) {
-                    if (countControllers > 1) return false; // too many controllers
-                    BlockState offset = withOffset(level, pos, i, j);
-                    if (offset.is(ModBlocks.SMELTER_INVENTORY)) countInventories++; // inventory
-                    else if (offset.is(ModBlocks.SMELTER_CONTROLLER)) countControllers++; // 1 controller
-                    else if (!offset.is(ModBlocks.SMELTER_HOUSING)) {// not a housing, controller, or inventory
+    
+    private boolean updateShape(Level level, BlockPos pos, List<BlockPos> positions) {
+        positions.clear();
+        int controllers = 0;
+        int inventories = 0;
+        
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    BlockPos off = pos.offset(x, y, z);
+                    BlockState state = level.getBlockState(off);
+                    Eunithice.LOGGER.info("{}, {}, {} : {}", off.getX(), off.getY(), off.getZ(), state);
+                    if (state.is(ModBlocks.SMELTERY_CONTROLLER)) {
+                        controllers++;
+                    } else if (state.is(ModBlocks.SMELTERY_INVENTORY)) {
+                        inventories++;
+                    } else if (!state.is(ModTags.Blocks.SMELTERY_VALID_BLOCKS)) {
                         return false;
                     }
+                    positions.add(off);
                 }
             }
-            //TODO: store the amount of connected inventories so we don't need to recalculate 500 times per tick
-            return countControllers == 1;
-        } else {
-            for (int i = -1; i < 1; i++) {
-                for (int j = -1; j < 1; j++) {
-                    if (!withOffset(level, pos, i, j).is(ModBlocks.SMELTER_HOUSING)) return false;
-                }
-            }
-            return true;
         }
+        return positions.size() >= 27 && controllers == 1 && inventories <= 8;
     }
 
-    private BlockState withOffset(Level level, BlockPos pos, int x, int z) {
-        return level.getBlockState(pos.offset(x, 0, z));
-    }
-
-    private boolean isAssembled() {
+    public boolean isAssembled() {
         return isAssembled;
     }
 
@@ -147,4 +118,7 @@ public class SmelterControllerBlockEntity extends BlockEntity {
     }
 
 
+    public void activate(Level level, BlockPos pos) {
+        this.isAssembled = updateShape(level, pos, effectBlocks);
+    }
 }

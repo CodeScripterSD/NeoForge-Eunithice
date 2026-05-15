@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "eunithice:smelter_controller"
+          "name": "eunithice:smeltery_inventory"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "eunithice:blocks/smelter_controller"
+  "random_sequence": "eunithice:blocks/smeltery_inventory"
 }

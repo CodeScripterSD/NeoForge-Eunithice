@@ -46,11 +46,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_DARKWOOD_LOG);
         blockItem(ModBlocks.STRIPPED_DARKWOOD_WOOD);
 
-        blockWithItem(ModBlocks.SMELTER_HOUSING);
-        horizontallyRotatedBlock(ModBlocks.SMELTER_CONTROLLER, blockTexture(ModBlocks.SMELTER_CONTROLLER.get()), blockTexture(ModBlocks.SMELTER_HOUSING.get()));
-        blockWithItem(ModBlocks.SMELTER_INVENTORY);
+        blockWithItem(ModBlocks.SMELTERY_HOUSING);
+        horizontallyRotatedBlock(ModBlocks.SMELTERY_CONTROLLER, blockTexture(ModBlocks.SMELTERY_CONTROLLER.get()), blockTexture(ModBlocks.SMELTERY_HOUSING.get()));
+        blockWithItem(ModBlocks.SMELTERY_INVENTORY);
 
-        blockItem(ModBlocks.SMELTER_CONTROLLER);
+        blockItem(ModBlocks.SMELTERY_CONTROLLER);
         blockItem(ModBlocks.DARKWOOD_STAIRS);
         blockItem(ModBlocks.DARKWOOD_SLAB);
         blockItem(ModBlocks.DARKWOOD_PRESSURE_PLATE);

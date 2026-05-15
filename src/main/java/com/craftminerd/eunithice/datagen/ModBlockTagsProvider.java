@@ -6,7 +6,6 @@ import com.craftminerd.eunithice.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -46,5 +45,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.LEAVES).add(ModBlocks.DARKWOOD_LEAVES.get());
         tag(BlockTags.MINEABLE_WITH_HOE).add(ModBlocks.DARKWOOD_LEAVES.get());
+
+        tag(ModTags.Blocks.C_STRIPPED).add(ModBlocks.STRIPPED_DARKWOOD_LOG.get());
+        tag(ModTags.Blocks.C_STRIPPED_WOOD).add(ModBlocks.STRIPPED_DARKWOOD_WOOD.get());
+        tag(ModTags.Blocks.C_WOODEN_FENCE_GATES).add(ModBlocks.DARKWOOD_FENCE_GATE.get());
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.UNLOCKED_ANVIL.get());
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.UNLOCKED_ANVIL.get());
+        tag(ModTags.Blocks.SMELTERY_VALID_BLOCKS).add(ModBlocks.SMELTERY_HOUSING.get());
+        tag(BlockTags.SAPLINGS).add(ModBlocks.DARKWOOD_SAPLING.get());
     }
 }

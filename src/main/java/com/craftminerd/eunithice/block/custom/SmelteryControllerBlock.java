@@ -1,6 +1,7 @@
 package com.craftminerd.eunithice.block.custom;
 
-import com.craftminerd.eunithice.block.blockentity.SmelterControllerBlockEntity;
+import com.craftminerd.eunithice.Eunithice;
+import com.craftminerd.eunithice.block.blockentity.SmelteryControllerBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,19 +17,24 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class SmelterControllerBlock extends BaseEntityBlock implements EntityBlock {
-    public static final MapCodec<SmelterControllerBlock> CODEC = simpleCodec(SmelterControllerBlock::new);
+public class SmelteryControllerBlock extends BaseEntityBlock implements EntityBlock {
+    public static final MapCodec<SmelteryControllerBlock> CODEC = simpleCodec(SmelteryControllerBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    public SmelterControllerBlock(Properties properties) {
+    public SmelteryControllerBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof SmelterControllerBlockEntity be) {
-            be.checkShouldBeAssembled();
-            return InteractionResult.sidedSuccess(level.isClientSide);
+        if (level.getBlockEntity(pos) instanceof SmelteryControllerBlockEntity be) {
+            if (be.isAssembled()) {
+                Eunithice.LOGGER.info("Ready to open screen!");
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            } else {
+                be.activate(level, pos.relative(state.getValue(HorizontalDirectionalBlock.FACING).getOpposite()));
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }
@@ -50,7 +56,7 @@ public class SmelterControllerBlock extends BaseEntityBlock implements EntityBlo
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new SmelterControllerBlockEntity(pos, state);
+        return new SmelteryControllerBlockEntity(pos, state);
     }
 
     @Override

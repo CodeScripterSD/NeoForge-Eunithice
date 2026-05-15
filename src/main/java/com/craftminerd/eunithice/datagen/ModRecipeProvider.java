@@ -122,7 +122,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.DARKWOOD_PLANKS), has(ModBlocks.DARKWOOD_PLANKS)).save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModBlocks.TRIGGER_BLOCK)
-                .requires(ModTags.Items.GLASS_PANES).requires(ItemTags.WOODEN_PRESSURE_PLATES)
+                .requires(ModTags.Items.C_GLASS_PANES).requires(ItemTags.WOODEN_PRESSURE_PLATES)
                 .unlockedBy("has_pressure_plate", has(ItemTags.WOODEN_PRESSURE_PLATES)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModItems.CONFIG_TOOL)
                 .requires(Items.IRON_NUGGET).requires(Items.STICK)

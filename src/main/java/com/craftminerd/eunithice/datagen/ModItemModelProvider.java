@@ -34,6 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         handheldItem(ModItems.CONFIG_TOOL.get());
         basicItem(ModItems.AIMING_ARROW.asItem());
+        withExistingParent(ModItems.MECHANICAL_BOW.getId().getPath(), modLoc("item/experimental_bow"));
 
         withExistingParent(ModItems.POSTAR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

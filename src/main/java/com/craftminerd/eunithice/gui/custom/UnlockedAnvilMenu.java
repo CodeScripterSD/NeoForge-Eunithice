@@ -7,17 +7,18 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.inventory.ItemCombinerMenu;
+import net.minecraft.world.inventory.ItemCombinerMenuSlotDefinition;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
@@ -78,6 +79,7 @@ public class UnlockedAnvilMenu extends ItemCombinerMenu {
         }
 
         this.cost.set(0);
+        this.access.execute((level, pos) -> level.levelEvent(1030, pos, 0));
     }
 
     @Override
@@ -151,6 +153,12 @@ public class UnlockedAnvilMenu extends ItemCombinerMenu {
                         j2 = i2 == j2 ? j2 + 1 : Math.max(j2, i2);
                         Enchantment enchantment = holder.value();
 
+                        for (Holder<Enchantment> holder1 : itemenchantments$mutable.keySet()) {
+                            if (!holder1.equals(holder) && !Enchantment.areCompatible(holder, holder1)) {
+                                applyCost += 200;
+                            }
+                        }
+
                         if (j2 > enchantment.getMaxLevel()) {
                             j2 = enchantment.getMaxLevel();
                         }
@@ -190,7 +198,7 @@ public class UnlockedAnvilMenu extends ItemCombinerMenu {
             }
 
             if (k == applyCost && k > 0 && this.cost.get() >= 40) {
-                this.cost.set(39);
+                this.cost.set(30);
             }
 
             if (!itemstack1.isEmpty()) {

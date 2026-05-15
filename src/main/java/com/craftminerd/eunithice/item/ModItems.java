@@ -4,10 +4,7 @@ import com.craftminerd.eunithice.Eunithice;
 import com.craftminerd.eunithice.entity.ModEntities;
 import com.craftminerd.eunithice.item.component.ConfigToolState;
 import com.craftminerd.eunithice.item.component.ModDataComponents;
-import com.craftminerd.eunithice.item.custom.AimingArrowItem;
-import com.craftminerd.eunithice.item.custom.ConfigurationTool;
-import com.craftminerd.eunithice.item.custom.ExperimentalBow;
-import com.craftminerd.eunithice.item.custom.OmnitoolItem;
+import com.craftminerd.eunithice.item.custom.*;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -32,6 +29,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> EXPERIMENTAL_SHORTBOW = ITEMS.register("experimental_bow", () ->
             new ExperimentalBow(new Item.Properties().durability(212)));
+
+    public static final DeferredItem<Item> MECHANICAL_BOW = ITEMS.register("mechanical_bow", () ->
+            new MechanicalBow(new Item.Properties().durability(212)));
 
     public static final DeferredItem<Item> CONFIG_TOOL = ITEMS.register("config_tool", () ->
             new ConfigurationTool(new Item.Properties()
