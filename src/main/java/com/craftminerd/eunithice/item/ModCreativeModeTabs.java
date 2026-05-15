@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
             .icon(() -> ModItems.IRON_OMNITOOL.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ModBlocks.DARKWOOD_SAPLING);
+                output.accept(ModItems.MACROFIBER_APPLE);
                 output.accept(ModBlocks.DARKWOOD_LEAVES);
                 output.accept(ModBlocks.DARKWOOD_LOG);
                 output.accept(ModBlocks.DARKWOOD_WOOD);

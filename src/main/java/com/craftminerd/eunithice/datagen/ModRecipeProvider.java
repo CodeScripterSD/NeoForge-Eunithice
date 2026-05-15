@@ -145,6 +145,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('i', Items.IRON_INGOT)
                 .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, Items.GOLDEN_APPLE)
+                .pattern("ggg")
+                .pattern("gag")
+                .pattern("ggg")
+                .define('g', Items.GOLD_NUGGET)
+                .define('a', ModItems.MACROFIBER_APPLE)
+                .unlockedBy(getHasName(ModItems.MACROFIBER_APPLE), has(ModItems.MACROFIBER_APPLE))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, getItemName(Items.GOLDEN_APPLE)));
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, Items.ENCHANTED_GOLDEN_APPLE)
+                .pattern("GGG")
+                .pattern("GaG")
+                .pattern("GGG")
+                .define('G', Items.GOLD_BLOCK)
+                .define('a', ModItems.MACROFIBER_APPLE)
+                .unlockedBy(getHasName(ModItems.MACROFIBER_APPLE), has(ModItems.MACROFIBER_APPLE))
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, getItemName(Items.ENCHANTED_GOLDEN_APPLE)));
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {

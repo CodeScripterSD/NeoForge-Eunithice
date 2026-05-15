@@ -61,5 +61,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.Items.C_BOWS).add(ModItems.EXPERIMENTAL_SHORTBOW.get());
         tag(ModTags.Items.C_MINING).addTag(ModTags.Items.OMNITOOLS);
         tag(ItemTags.SAPLINGS).add(ModBlocks.DARKWOOD_SAPLING.asItem());
+        tag(ModTags.Items.C_FRUITS).add(ModItems.MACROFIBER_APPLE.get());
     }
 }

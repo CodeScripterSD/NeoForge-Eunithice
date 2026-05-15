@@ -20,6 +20,7 @@ public class ModTags {
         public static final TagKey<Item> C_STRIPPED_WOOD = commonTag("stripped_woods");
         public static final TagKey<Item> C_BOWS = commonTag("tools/bow");
         public static final TagKey<Item> C_MINING = commonTag("tools/mining_tool");
+        public static final TagKey<Item> C_FRUITS = commonTag("foods/fruit");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, name));

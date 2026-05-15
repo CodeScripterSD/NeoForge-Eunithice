@@ -44,6 +44,9 @@ public class ModItems {
     public static final DeferredItem<Item> AIMING_ARROW = ITEMS.register("aiming_arrow", () ->
             new AimingArrowItem(new Item.Properties()));
 
+    public static final DeferredItem<Item> MACROFIBER_APPLE = ITEMS.register("macrofiber_apple", () ->
+            new Item(new Item.Properties().food(ModFoods.MACROFIBER_APPLE)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
