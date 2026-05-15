@@ -17,16 +17,22 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DARKWOOD_PLACED_KEY = registerKey("darkwood_placed");
+    public static final ResourceKey<PlacedFeature> FANCY_DARKWOOD_PLACED_KEY = registerKey("fancy_darkwood_placed");
+    public static final ResourceKey<PlacedFeature> MEGA_DARKWOOD_PLACED_KEY = registerKey("mega_darkwood_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
+        // Note: the chance value gets 1 / x for some reason; The result of 1 / v MUST be an Integer. Keep that in mind when picking chances.
         register(context, DARKWOOD_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DARK_WOOD_KEY),
-                // Note to shadow: the chance value gets 1 / x for some reason; The result of 1 / v MUST be an Integer. Keep that in mind when picking chances.
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.125f, 1),
-                        ModBlocks.DARKWOOD_SAPLING.get())); // This is the generation restriction for the tree.
-        // Basically any block will work here, but we pick the sapling so that generation is restricted to DIRT and GRASS.
-        // Trees would grow on themselves without this, and also inside of caves and a bunch of dumb places.
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.125f, 2),
+                        ModBlocks.DARKWOOD_SAPLING.get()));
+        register(context, FANCY_DARKWOOD_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.FANCY_DARK_WOOD_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.0625f, 1),
+                        ModBlocks.DARKWOOD_SAPLING.get()));
+        register(context, MEGA_DARKWOOD_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.MEGA_DARK_WOOD_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.2f, 1),
+                        ModBlocks.DARKWOOD_SAPLING.get()));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {

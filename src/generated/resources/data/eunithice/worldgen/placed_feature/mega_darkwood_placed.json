@@ -1,5 +1,5 @@
 {
-  "feature": "eunithice:dark_wood",
+  "feature": "eunithice:mega_dark_wood",
   "placement": [
     {
       "type": "minecraft:count",
@@ -8,10 +8,10 @@
         "distribution": [
           {
             "data": 0,
-            "weight": 7
+            "weight": 4
           },
           {
-            "data": 2,
+            "data": 1,
             "weight": 1
           }
         ]

@@ -8,5 +8,11 @@ import java.util.Optional;
 
 public class ModTreeGrowers {
     public static final TreeGrower DARKWOOD = new TreeGrower(Eunithice.MODID + ":darkwood",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.DARK_WOOD_KEY), Optional.empty());
+            0.1f,
+            Optional.of(ModConfiguredFeatures.MEGA_DARK_WOOD_KEY),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.DARK_WOOD_KEY),
+            Optional.of(ModConfiguredFeatures.FANCY_DARK_WOOD_KEY),
+            Optional.empty(),
+            Optional.empty());
 }

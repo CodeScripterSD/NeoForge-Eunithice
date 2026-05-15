@@ -14,13 +14,19 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_TREE_DARKWOOD = registerKey("add_tree_darkwood");
+    public static final ResourceKey<BiomeModifier> ADD_MEGA_TREE_DARKWOOD = registerKey("add_mega_tree_darkwood");
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
         context.register(ADD_TREE_DARKWOOD, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(Biomes.SWAMP), biomes.getOrThrow(Biomes.DARK_FOREST)),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DARKWOOD_PLACED_KEY)),
+                HolderSet.direct(biomes.getOrThrow(Biomes.SWAMP)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DARKWOOD_PLACED_KEY), placedFeatures.getOrThrow(ModPlacedFeatures.FANCY_DARKWOOD_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_MEGA_TREE_DARKWOOD, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.DARK_FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MEGA_DARKWOOD_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 
