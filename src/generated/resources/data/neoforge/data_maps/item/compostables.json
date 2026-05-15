@@ -5,6 +5,9 @@
     },
     "eunithice:darkwood_sapling": {
       "chance": 0.3
+    },
+    "eunithice:macrofiber_apple": {
+      "chance": 1.0
     }
   }
 }

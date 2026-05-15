@@ -1,6 +1,7 @@
 package com.craftminerd.eunithice.datagen;
 
 import com.craftminerd.eunithice.block.ModBlocks;
+import com.craftminerd.eunithice.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
@@ -21,6 +22,7 @@ public class ModDataMapProvider extends DataMapProvider {
                 .add(ModBlocks.DARKWOOD_LOG, new Strippable(ModBlocks.STRIPPED_DARKWOOD_LOG.get()), false)
                 .add(ModBlocks.DARKWOOD_WOOD, new Strippable(ModBlocks.STRIPPED_DARKWOOD_WOOD.get()), false);
         builder(NeoForgeDataMaps.COMPOSTABLES)
+                .add(ModItems.MACROFIBER_APPLE.getId(), new Compostable(1f), false)
                 .add(ModBlocks.DARKWOOD_SAPLING.getId(), new Compostable(0.3f), false)
                 .add(ModBlocks.DARKWOOD_LEAVES.getId(), new Compostable(0.3f), false);
         super.gather(provider);
