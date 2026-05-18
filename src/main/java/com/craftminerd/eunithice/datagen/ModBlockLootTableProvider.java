@@ -47,6 +47,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.TRIGGER_BLOCK.get());
         dropSelf(ModBlocks.UNLOCKED_ANVIL.get());
+        dropSelf(ModBlocks.PEDESTAL.get());
+        add(ModBlocks.NEUDONITE_ORE.get(), block -> createOreDrop(ModBlocks.NEUDONITE_ORE.get(), ModItems.RAW_NEUDONITE.get()));
+        add(ModBlocks.DEEPSLATE_NEUDONITE_ORE.get(), block -> createOreDrop(ModBlocks.DEEPSLATE_NEUDONITE_ORE.get(), ModItems.RAW_NEUDONITE.get()));
+        dropSelf(ModBlocks.NEUDONITE_BLOCK.get());
+        dropSelf(ModBlocks.RAW_NEUDONITE_BLOCK.get());
     }
 
     @Override

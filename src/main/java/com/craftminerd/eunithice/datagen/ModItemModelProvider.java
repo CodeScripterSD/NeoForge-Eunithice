@@ -38,6 +38,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.POSTAR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
         basicItem(ModItems.MACROFIBER_APPLE.get());
+        basicItem(ModItems.NEUDONITE_INGOT.asItem());
+        basicItem(ModItems.RAW_NEUDONITE.asItem());
     }
 
     private ItemModelBuilder blockItem(DeferredBlock<Block> block, String parent) {

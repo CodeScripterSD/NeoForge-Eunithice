@@ -18,6 +18,9 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<SmelteryControllerBlockEntity>> SMELTERY_CONTROLLER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("smeltery_controller_block_entity",
             () -> BlockEntityType.Builder.of(SmelteryControllerBlockEntity::new, ModBlocks.SMELTERY_CONTROLLER.get()).build(null));
 
+    public static final Supplier<BlockEntityType<PedestalBlockEntity>> PEDESTAL_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("pedestal_block_entity",
+            () -> BlockEntityType.Builder.of(PedestalBlockEntity::new, ModBlocks.PEDESTAL.get()).build(null));
+
     public static void register(IEventBus bus) {
         BLOCK_ENTITY_TYPES.register(bus);
     }

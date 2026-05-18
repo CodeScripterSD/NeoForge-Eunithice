@@ -5,6 +5,8 @@ import com.ibm.icu.impl.Pair;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
@@ -22,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -129,5 +133,11 @@ public class OmnitoolItem extends DiggerItem {
                 || ItemAbilities.DEFAULT_HOE_ACTIONS.contains(itemAbility)
                 || ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(itemAbility)
                 || ItemAbilities.DEFAULT_PICKAXE_ACTIONS.contains(itemAbility);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (!stack.getComponents().has(DataComponents.UNBREAKABLE)) tooltipComponents.add(Component.translatable("tooltip.eunithice.omnitool_durability", stack.getMaxDamage()-stack.getDamageValue()));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

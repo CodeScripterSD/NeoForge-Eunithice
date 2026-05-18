@@ -35,6 +35,13 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.DARKWOOD_TRAPDOOR);
                 output.accept(ModBlocks.DARKWOOD_PRESSURE_PLATE);
                 output.accept(ModBlocks.DARKWOOD_BUTTON);
+                output.accept(ModBlocks.NEUDONITE_ORE);
+                output.accept(ModBlocks.DEEPSLATE_NEUDONITE_ORE);
+                output.accept(ModBlocks.NEUDONITE_BLOCK);
+                output.accept(ModItems.NEUDONITE_INGOT);
+                output.accept(ModBlocks.RAW_NEUDONITE_BLOCK);
+                output.accept(ModItems.RAW_NEUDONITE);
+                output.accept(ModBlocks.PEDESTAL);
                 output.accept(ModBlocks.TRIGGER_BLOCK);
                 output.accept(ModBlocks.SMELTERY_CONTROLLER);
                 output.accept(ModBlocks.SMELTERY_INVENTORY);
@@ -42,8 +49,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.UNLOCKED_ANVIL);
                 output.accept(ModItems.GOLDEN_OMNITOOL);
                 output.accept(ModItems.WOODEN_OMNITOOL);
-                output.accept(ModItems.IRON_OMNITOOL);
                 output.accept(ModItems.STONE_OMNITOOL);
+                output.accept(ModItems.IRON_OMNITOOL);
                 output.accept(ModItems.DIAMOND_OMNITOOL);
                 output.accept(ModItems.NETHERITE_OMNITOOL);
                 output.accept(ModItems.EXPERIMENTAL_SHORTBOW);

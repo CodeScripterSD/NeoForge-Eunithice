@@ -2,6 +2,7 @@ package com.craftminerd.eunithice;
 
 import com.craftminerd.eunithice.block.ModBlocks;
 import com.craftminerd.eunithice.block.blockentity.ModBlockEntities;
+import com.craftminerd.eunithice.block.renderer.PedestalBlockRenderer;
 import com.craftminerd.eunithice.block.renderer.TriggerBlockRenderer;
 import com.craftminerd.eunithice.entity.ModEntities;
 import com.craftminerd.eunithice.entity.client.AimingArrowRenderer;
@@ -52,6 +53,7 @@ public class EunithiceClient {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.TRIGGER_BLOCK_ENTITY.get(), (context) -> new TriggerBlockRenderer());
+        event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BLOCK_ENTITY.get(), (context) -> new PedestalBlockRenderer());
         event.registerEntityRenderer(ModEntities.AIMING_ARROW.get(), AimingArrowRenderer::new);
     }
 }

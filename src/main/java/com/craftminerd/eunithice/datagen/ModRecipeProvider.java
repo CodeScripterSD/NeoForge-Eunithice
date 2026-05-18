@@ -10,10 +10,11 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -161,6 +162,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('a', ModItems.MACROFIBER_APPLE)
                 .unlockedBy(getHasName(ModItems.MACROFIBER_APPLE), has(ModItems.MACROFIBER_APPLE))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, getItemName(Items.ENCHANTED_GOLDEN_APPLE)));
+
+        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NEUDONITE_BLOCK, ModItems.NEUDONITE_INGOT);
+        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAW_NEUDONITE_BLOCK, ModItems.RAW_NEUDONITE);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NEUDONITE_INGOT, 9)
+                .unlockedBy(getHasName(ModBlocks.NEUDONITE_BLOCK), has(ModBlocks.NEUDONITE_BLOCK))
+                .requires(ModBlocks.NEUDONITE_BLOCK)
+                .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RAW_NEUDONITE, 9)
+                .unlockedBy(getHasName(ModBlocks.RAW_NEUDONITE_BLOCK), has(ModBlocks.RAW_NEUDONITE_BLOCK))
+                .requires(ModBlocks.RAW_NEUDONITE_BLOCK)
+                .save(recipeOutput);
+
+        eunithiceOreSmelting(recipeOutput, List.of(ModBlocks.NEUDONITE_ORE, ModBlocks.DEEPSLATE_NEUDONITE_ORE, ModItems.RAW_NEUDONITE),
+                RecipeCategory.MISC, ModItems.NEUDONITE_INGOT, 0.7f, 200, "neudonite");
+        eunithiceOreBlasting(recipeOutput, List.of(ModBlocks.NEUDONITE_ORE, ModBlocks.DEEPSLATE_NEUDONITE_ORE, ModItems.RAW_NEUDONITE),
+                RecipeCategory.MISC, ModItems.NEUDONITE_INGOT, 0.7f, 100, "neudonite");
     }
 
     protected static void eunithiceNetheriteSmithing(RecipeOutput recipeOutput, ItemLike ingredientItem, RecipeCategory category, ItemLike resultItem) {
@@ -170,5 +187,59 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Ingredient.of(Items.NETHERITE_INGOT), category, resultItem.asItem())
                 .unlocks(getHasName(Items.NETHERITE_INGOT), has(Items.NETHERITE_INGOT))
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, getItemName(resultItem) + "_smithing"));
+    }
+
+    protected static void eunithiceOreSmelting(
+            RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group
+    ) {
+        eunithiceOreCooking(
+                recipeOutput,
+                RecipeSerializer.SMELTING_RECIPE,
+                SmeltingRecipe::new,
+                ingredients,
+                category,
+                result,
+                experience,
+                cookingTime,
+                group,
+                "_from_smelting"
+        );
+    }
+
+    protected static void eunithiceOreBlasting(
+            RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group
+    ) {
+        eunithiceOreCooking(
+                recipeOutput,
+                RecipeSerializer.BLASTING_RECIPE,
+                BlastingRecipe::new,
+                ingredients,
+                category,
+                result,
+                experience,
+                cookingTime,
+                group,
+                "_from_blasting"
+        );
+    }
+
+    protected static <T extends AbstractCookingRecipe> void eunithiceOreCooking(
+            RecipeOutput recipeOutput,
+            RecipeSerializer<T> serializer,
+            AbstractCookingRecipe.Factory<T> recipeFactory,
+            List<ItemLike> ingredients,
+            RecipeCategory category,
+            ItemLike result,
+            float experience,
+            int cookingTime,
+            String group,
+            String suffix
+    ) {
+        for (ItemLike itemlike : ingredients) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), category, result, experience, cookingTime, serializer, recipeFactory)
+                    .group(group)
+                    .unlockedBy(getHasName(itemlike), has(itemlike))
+                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(Eunithice.MODID, getItemName(result) + suffix + "_" + getItemName(itemlike)));
+        }
     }
 }

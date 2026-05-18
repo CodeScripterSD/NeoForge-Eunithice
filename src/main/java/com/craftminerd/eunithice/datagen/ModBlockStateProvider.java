@@ -60,6 +60,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         particleOnly(ModBlocks.TRIGGER_BLOCK);
         anvilBlock(ModBlocks.UNLOCKED_ANVIL, blockTexture(ModBlocks.UNLOCKED_ANVIL.get()));
         blockItem(ModBlocks.UNLOCKED_ANVIL);
+
+        blockWithItem(ModBlocks.NEUDONITE_ORE);
+        blockWithItem(ModBlocks.DEEPSLATE_NEUDONITE_ORE);
+        blockWithItem(ModBlocks.RAW_NEUDONITE_BLOCK);
+        blockWithItem(ModBlocks.NEUDONITE_BLOCK);
     }
     private void anvilBlock(DeferredBlock<Block> block, ResourceLocation anvil) {
         horizontallyRotatedBlock(block.get(),

@@ -15,6 +15,8 @@
   "item.eunithice.postar_spawn_egg": "Postar Spawn Egg",
   "item.eunithice.aiming_arrow": "Aiming Arrow",
   "item.eunithice.macrofiber_apple": "Macrofiber Apple",
+  "item.eunithice.raw_neudonite": "Raw Neudonite",
+  "item.eunithice.neudonite_ingot": "Neudonite Ingot",
 
   "enchantment.eunithice.firing_speed": "Firing Speed",
   "enchantment.eunithice.firing_speed.desc": "Decreases the cooldown between shots on Eunithice's Shortbow items.",
@@ -51,6 +53,11 @@
   "block.eunithice.smeltery_inventory": "Smeltery Inventory Block",
   "block.eunithice.smeltery_controller": "Smeltery Controller",
   "block.eunithice.unlocked_anvil": "Unlocked Anvil",
+  "block.eunithice.pedestal": "Pedestal",
+  "block.eunithice.neudonite_ore": "Neudonite Ore",
+  "block.eunithice.deepslate_neudonite_ore": "Deepslate Neudonite Ore",
+  "block.eunithice.neudonite_block": "Neudonite Block",
+  "block.eunithice.raw_neudonite_block": "Raw Neudonite Block",
 
   "advancements.eunithice.root.title": "Eunithice",
   "advancements.eunithice.root.description": "The random oddities someone may find useful",
@@ -69,5 +76,6 @@
   "eunithice.configuration.alwaysShowBreakHitbox": "Always Show Break Hitbox",
   "eunithice.configuration.alwaysShowBreakHitbox.tooltip": "Always show the break hitbox of invisible blocks.",
   "eunithice.configuration.section.eunithice.client.toml": "Client",
-  "eunithice.configuration.section.eunithice.client.toml.title": "Eunithice Client Configs"
+  "eunithice.configuration.section.eunithice.client.toml.title": "Eunithice Client Configs",
+  "tooltip.eunithice.omnitool_durability": "HP: %s"
 }

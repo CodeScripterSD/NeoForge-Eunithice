@@ -51,7 +51,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.C_WOODEN_FENCE_GATES).add(ModBlocks.DARKWOOD_FENCE_GATE.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.UNLOCKED_ANVIL.get());
+                .add(ModBlocks.UNLOCKED_ANVIL.get())
+                .add(ModBlocks.NEUDONITE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_NEUDONITE_ORE.get())
+                .add(ModBlocks.RAW_NEUDONITE_BLOCK.get())
+                .add(ModBlocks.NEUDONITE_BLOCK.get());
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.NEUDONITE_ORE.get())
+                .add(ModBlocks.DEEPSLATE_NEUDONITE_ORE.get())
+                .add(ModBlocks.RAW_NEUDONITE_BLOCK.get())
+                .add(ModBlocks.NEUDONITE_BLOCK.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.UNLOCKED_ANVIL.get());
         tag(ModTags.Blocks.SMELTERY_VALID_BLOCKS).add(ModBlocks.SMELTERY_HOUSING.get());

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    },
+    {
+      "item": "eunithice:raw_neudonite"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "eunithice:raw_neudonite_block"
+  }
+}

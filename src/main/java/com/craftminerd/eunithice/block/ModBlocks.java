@@ -1,14 +1,12 @@
 package com.craftminerd.eunithice.block;
 
 import com.craftminerd.eunithice.Eunithice;
-import com.craftminerd.eunithice.block.custom.ModFlammableRotatedPillarBlock;
-import com.craftminerd.eunithice.block.custom.SmelteryControllerBlock;
-import com.craftminerd.eunithice.block.custom.TriggerBlock;
-import com.craftminerd.eunithice.block.custom.UnlockedAnvilBlock;
+import com.craftminerd.eunithice.block.custom.*;
 import com.craftminerd.eunithice.item.ModItems;
 import com.craftminerd.eunithice.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +17,9 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -34,10 +34,10 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Eunithice.MODID);
 
 
-    public static final DeferredBlock<Block> DARKWOOD_SAPLING = registerBlock("darkwood_sapling", () ->
-            new SaplingBlock(ModTreeGrowers.DARKWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+    public static final DeferredBlock<Block> DARKWOOD_SAPLING = registerBlock("darkwood_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.DARKWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
-    // Light Oak
+    // Darkwood
 
     public static final DeferredBlock<Block> DARKWOOD_LOG = registerBlock("darkwood_log", ModFlammableRotatedPillarBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
@@ -51,8 +51,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STRIPPED_DARKWOOD_WOOD = registerBlock("stripped_darkwood_wood", ModFlammableRotatedPillarBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD));
 
-    public static final DeferredBlock<Block> DARKWOOD_LEAVES = registerBlock("darkwood_leaves", () ->
-            new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
+    public static final DeferredBlock<Block> DARKWOOD_LEAVES = registerBlock("darkwood_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
                     return true;
@@ -69,8 +69,8 @@ public class ModBlocks {
                 }
             });
 
-    public static final DeferredBlock<Block> DARKWOOD_PLANKS = registerBlock("darkwood_planks", () ->
-            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+    public static final DeferredBlock<Block> DARKWOOD_PLANKS = registerBlock("darkwood_planks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
                     return true;
@@ -87,8 +87,8 @@ public class ModBlocks {
                 }
             });
 
-    public static final DeferredBlock<StairBlock> DARKWOOD_STAIRS = registerBlock("darkwood_stairs", () ->
-            new StairBlock(DARKWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
+    public static final DeferredBlock<StairBlock> DARKWOOD_STAIRS = registerBlock("darkwood_stairs",
+            () -> new StairBlock(DARKWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
 
     public static final DeferredBlock<SlabBlock> DARKWOOD_SLAB = registerBlock("darkwood_slab", SlabBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB));
@@ -96,21 +96,21 @@ public class ModBlocks {
     public static final DeferredBlock<FenceBlock> DARKWOOD_FENCE = registerBlock("darkwood_fence", FenceBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE));
 
-    public static final DeferredBlock<FenceGateBlock> DARKWOOD_FENCE_GATE = registerBlock("darkwood_fence_gate", () ->
-            new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+    public static final DeferredBlock<FenceGateBlock> DARKWOOD_FENCE_GATE = registerBlock("darkwood_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
     // MR KAUPENJOE has stated that ^ should NOT matter, apparently. Thusly, instead of dedicating more hours to making a custom one, I will inherit vanilla Oak.
 
-    public static final DeferredBlock<DoorBlock> DARKWOOD_DOOR = registerBlock("darkwood_door", () ->
-            new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
+    public static final DeferredBlock<DoorBlock> DARKWOOD_DOOR = registerBlock("darkwood_door",
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
 
-    public static final DeferredBlock<TrapDoorBlock> DARKWOOD_TRAPDOOR = registerBlock("darkwood_trapdoor", () ->
-            new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
+    public static final DeferredBlock<TrapDoorBlock> DARKWOOD_TRAPDOOR = registerBlock("darkwood_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
 
-    public static final DeferredBlock<ButtonBlock> DARKWOOD_BUTTON = registerBlock("darkwood_button", () ->
-            new ButtonBlock(BlockSetType.OAK, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+    public static final DeferredBlock<ButtonBlock> DARKWOOD_BUTTON = registerBlock("darkwood_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
 
-    public static final DeferredBlock<PressurePlateBlock> DARKWOOD_PRESSURE_PLATE = registerBlock("darkwood_pressure_plate", () ->
-            new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+    public static final DeferredBlock<PressurePlateBlock> DARKWOOD_PRESSURE_PLATE = registerBlock("darkwood_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
 
     public static final DeferredBlock<Block> TRIGGER_BLOCK = registerBlock("trigger_block", TriggerBlock::new,
             BlockBehaviour.Properties.of()
@@ -122,8 +122,31 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SMELTERY_INVENTORY = registerSimpleBlock("smeltery_inventory");
     public static final DeferredBlock<Block> SMELTERY_HOUSING = registerSimpleBlock("smeltery_housing");
 
-    public static final DeferredBlock<Block> UNLOCKED_ANVIL = registerRarityBlock("unlocked_anvil", () ->
-                    new UnlockedAnvilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)), Rarity.RARE);
+    public static final DeferredBlock<Block> UNLOCKED_ANVIL = registerRarityBlock("unlocked_anvil",
+            () -> new UnlockedAnvilBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL)), Rarity.RARE);
+
+    public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal", PedestalBlock::new,
+            BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .destroyTime(0.2f));
+
+    public static final DeferredBlock<Block> NEUDONITE_ORE = registerBlock("neudonite_ore",
+            () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                    .strength(3f, 3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> DEEPSLATE_NEUDONITE_ORE = registerBlock("deepslate_neudonite_ore",
+            () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DEEPSLATE)
+                    .strength(4.5f, 3f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+    public static final DeferredBlock<Block> NEUDONITE_BLOCK = registerSimpleBlock("neudonite_block", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_CYAN)
+            .strength(5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL));
+
+    public static final DeferredBlock<Block> RAW_NEUDONITE_BLOCK = registerSimpleBlock("raw_neudonite_block", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_CYAN)
+            .strength(5f, 6f).requiresCorrectToolForDrops().sound(SoundType.STONE));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

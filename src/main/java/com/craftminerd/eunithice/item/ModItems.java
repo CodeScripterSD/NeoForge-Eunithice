@@ -47,6 +47,12 @@ public class ModItems {
     public static final DeferredItem<Item> MACROFIBER_APPLE = ITEMS.register("macrofiber_apple", () ->
             new Item(new Item.Properties().food(ModFoods.MACROFIBER_APPLE)));
 
+    public static final DeferredItem<Item> RAW_NEUDONITE = ITEMS.register("raw_neudonite", () ->
+            new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> NEUDONITE_INGOT = ITEMS.register("neudonite_ingot", () ->
+            new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
