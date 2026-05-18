@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "eunithice:ore_neudonite",
+    "eunithice:ore_neudonite_small"
+  ],
+  "step": "underground_ores"
+}

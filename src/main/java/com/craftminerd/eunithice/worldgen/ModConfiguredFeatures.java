@@ -6,10 +6,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -20,7 +22,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
+import java.util.List;
 import java.util.OptionalInt;
 
 public class ModConfiguredFeatures {
@@ -28,6 +33,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_DARK_WOOD_KEY = registerKey("fancy_dark_wood");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_DARK_WOOD_KEY = registerKey("mega_dark_wood");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_NEUDONITE = registerKey("ore_neudonite");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_NEUDONITE_SMALL = registerKey("ore_neudonite_small");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, DARK_WOOD_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -51,6 +58,13 @@ public class ModConfiguredFeatures {
                 new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                 new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
                 .build());
+
+        RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest grimstoneReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        List<OreConfiguration.TargetBlockState> neudoniteOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.NEUDONITE_ORE.get().defaultBlockState()),
+                OreConfiguration.target(grimstoneReplaceables, ModBlocks.DEEPSLATE_NEUDONITE_ORE.get().defaultBlockState()));
+        register(context, ORE_NEUDONITE, Feature.ORE, new OreConfiguration(neudoniteOres, 16));
+        register(context, ORE_NEUDONITE_SMALL, Feature.ORE, new OreConfiguration(neudoniteOres, 8));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
